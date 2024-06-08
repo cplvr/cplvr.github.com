@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lo Spettro Elettromagnetico</title>
+	<style>
+		header {
+			text-align: center;
+		}
+
+		body {
+			background-color: #303030;
+			color: white;
+			margin: 0;
+			justify-content: center;
+			display: flex;
+		}
+
+		grid {
+			display: grid;
+			justify-content: center;
+			align-content: center;
+		}
+
+		#inputs {
+			grid-template-columns: auto auto auto;
+			grid-template-rows: 50% 50%;
+		}
+
+		.p-input {
+			padding: 0 3px 0 3px;
+		}
+
+		input {
+			background-color: #303030;
+			color: white;
+			position: relative;
+			top: -3px;
+		}
+
+		#summary {
+			margin: auto;
+			align-self: center;
+			width: 80vw;
+			display: none;
+			border-style: solid;
+			border-radius: 10px;
+		}
+
+		#summary h2 {
+			text-align: center;
+		}
+
+		#summary>p {
+			margin: 0 20% 40px 20%;
+			font-size: 18px;
+		}
+	</style>
+</head>
+
+<body>
+	<div style="width: 100%;">
+		<div>
+			<header>
+				<h1>Lo Spettro Elettromagnetico</h1>
+			</header>
+			<grid id="inputs">
+				<p><label for="meter">&lambda;</label></p>
+				<p class="p-input"><input type="number" id="meter"></p>
+				<p>m</p>
+				<p><label for="hz">f</label></p>
+				<p class="p-input"><input type="number" id="hz"></p>
+				<p>Hz</p>
+			</grid>
+			<div id="summary">
+				<h2></h2>
+				<p></p>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+
+	let C = 299792458; // Speed of light.
+
+	class wave {
+		constructor(name, description) {
+			this.name = name;
+			this.description = description;
+		}
+	}
+
+	const nullo = new wave(
+		'Nullo',
+		'<p>Questa frequenza non è riconducibile a nessuna parte dello spettro elettromagnetico.</p>'
+	)
+
+	// Onde Radio  > Microonde > Infrarossi > Luce Visibile > Ultravioletto > Raggi X > Raggi Gamma
+
+	const radio = new wave(
+		'Onde Radio',
+		'<p>Le onde radio più usate hanno frequenza compresa fra 0 e 3000000000 Hz (3 GHz), questa sezione delle onde radio contiene dalla banda 3, le <abbr title="Ultra Low Frequency">ULF</abbr>, alla banda 9, le <abbr title="Super High Frequency">SHF</abbr>. Esistono anche bande di numero maggiore e frequenze più alta, ma sono molto meno comuni e a volte più pericolose.</p><p>Questi tipi di Onda Radio vengono utilizzati prevalentemente nel settore della telecomunicazione, che ovviamente include la radiofonia ma include anche i radiofari, utilizzati dai GPS e in aviazione, la comunicazione sottomarina, e trasmissioni intercontinentali in morse.</p><p>In passato l\' aumento della presenza di onde radio ha causato molti disagi basati sui possibili rischi per la salute, ma la <abbr title="World Health Organization">WHO</abbr> he decreatato che dopo 70 anni di ricerca in questo campo la nostra conoscienza è estremamente estesa e non è stato trovata nessuna prova che ci sia alcuna consequenza per l\' esposizione a campi elettromagnetici di basso livello.</p>'
+	)
+
+	const microonde = new wave(
+		'Microonde',
+		'<p>Le microonde hanno frequenza compresa fra 3000000000 Hz (3 GHz) e 300000000000 Hz (300 GHz), furono teorizzate nel 1864 ma la loro esistenza venne dimostrata solo nel 1888, e il nome fu coniato nel 1932.</p><p>Questo tipo di onde può essere prodotto tramite due processi diversi:<li>A stato solido, utilizzando semi conduttori come il silicio.</li><li>Con tubi a vuoto, sfruttando il movimento degli elettroni nel vuoto sotto l\'influenza di campi elettrici o magnetici di controllo.</li></p><p>Questo tipo di onda viene utilizzato in unsa serie di casi, alcuni comuni altri estremamente unici. Come le armi a microonde, anche dette <abbr title="Active Denial System">ADS</abbr>, sviluppate delle forze armate degli Stati Uniti, sono utilizzate come armi non letali per il controllo della folla, anche se possono causare fino a bruciature di secondo grado e dolore straziante. Altri caso di uso molto meno violenti sono ovviamente i forni a microonde che utilizzano i tubi a vuoto per cucinare il cibo oppure il bluetooth che in alcune varianti utilizzano le microonde per trasportare informazioni.</p>'
+	)
+
+	const infrarossi = new wave(
+		'Infrarossi',
+		'<p>Gli infrarossi hanno frequenza compresa fra 300000000000 Hz (300 GHz) e 400000000000000 Hz (400 THz), vengono suddivise in varie bande, di cui alcune sono visibili ad occhio nudo. Furono scoperte nel 1800 con un esperimento basato sul calore delle varie fasce di luce visibile quando il termometro fu mosso oltre il bordo rosso e la temperatura continuò ad alzarsi.</p><p>I suoi utilizzi includono la visione notturna, tipica delle missioni militari tattiche, del soccorso pubblico e della sorveglianza; la trasmissione dei dati, ad esempio nei telecomandi per televisori, fra telefoni cellulari o anche tra computer a console per videogiochi portatili, come la Nintendo DS rilasciata nel 2004.</p>'
+	)
+
+	const visibile = new wave(
+		'Luce Visibile',
+		'<p>La luce visibile ha frequenza compresa fra 400000000000000 Hz (400 THz) e 75000000000000 Hz (750 THz), in passato la luce è stata oggetto di fervente dibattito tra scienziati che teorizzavano the più svariate spiegazioni al modo in cui la luce si propagasse, prima la teoria corpuscolare di Newton, che venne poi susseguita dalla teoria ondulatoria di Huygens, poi soppiantata dalla moderna teoria elettromagnetica ancora accettata oggi.</p><p>Un secondo elemento che moltissimi scienziati hanno studiato è la velocità della luce, il primo a tentare di misurarla fu Galileo Galilei che però falli per la rudimentalità dei suoi mezzi. la prima misurazione affidabile è attribuita a Ole Rømer, che nel 1675 sfruttò la i pianeti e la luna per calcolare una velocità di 227 326 km/s, che considerando il metodo fu un calcolo molto vicino alla realtà. Il risultato di gran lunga più accurato è quello di Albert Michelson, che grazie a uno specchio e una distanza conosciuta riusci a misurare la velocità della luca nell\'aria con grande risultato: 299 702 km/s.</p>'
+	)
+
+	const UV = new wave(
+		'Radiazione Ultravioletta',
+		'<p>La radiazione ultravioletta ha frequenza compresa fra 75000000000000 Hz (750 THz) e 30000000000000000 Hz (30 PHz), la sorgente principale di questo tipo di raggi è il Sole, la cui luce emessa è al 10% UV, ma anche alcune lampade speciali, come la lampade a vapori di mercurio possono produrre questa radiazione.</p><p>Questi raggi furono scoperi nel 1801, inizialmente chiamati raggi ossidanti, dato che la loro prima applicazione era inscurire il cloruro d\'argento, poi rinominati anche a raggi chimici, solo nel XIX secolo ottennero il nome odierno.</p><p>Le loro applicazioni principali sono nella sterelizzazione di ambienti e potabilizzazione dell\'acqua, dato che uccidono facilmente batteri e virus, nell\'analizzazione di vari minerali e gemme, e nella fololitografia durante la produzione di microprocessori.</p>'
+	)
+
+	const X = new wave(
+		'Raggi X',
+		'<p>I raggi X hanno frequenza da 30000000000000000 Hz (30 PHz) a 30000000000000000000 Hz (30 EHz), vennero scoperti nel 1887 dal famosissimo Nikola Tesla, e dopo molti altri studi le reazioni alla scoperta furono eclatanti, molti giornali presero interesse e causarono anche un buon numero di ciarlatani, come alcuni religiosi francesi che sostenevano di poter fotografare l\'anima.</p><p>Le principali applicazioni dei Raggi X sono nel campo medico, la loro scoperta ha rivoluzionato il modo in cui gli ospedali diagnosticano moltissimi malesseri, oltre alle radiografie esistono anche le <abbr title="Tomografie Assiali Computerizzate">TAC</abbr> che permettono di vedere l\'interno di un oggetto anche in altri campi come l\'archeologia.</p>'
+	)
+
+	const Gamma = new wave(
+		'Raggi Gamma',
+		'<p>I raggi Gamma hanno frequenza da 30000000000000000000 Hz (30 EHz) in poi, sono la onda elettromagnetica più pericolosa per via della loro frequenza estremamente elevata, eclissando tutte le altre onde in letalità e livello di energia.</p><p>I primi raggi gamma furono scoperi nel 1900 e ottennero il loro nome nel 1903, basandosi su altre radiazioni meno penetranti e perciò meno pericolose, i raggi Alpha e i raggi Beta. Ci sono pochi utilizzi per queste onde, dato che origginano da processi molto pericolosi, spesso resi così temibili propio dalle onde stesse. Sebbene questi raggi siano così perigliosi siamo comunque reiusciti a incanalarli in alcuni usi speciali, come il telescopio spaziale per raggi gamma Fermi, approvato nel 2001, creato su collaborazione di Italia, Francia, Giappone e Svezia, capace di rilevare lampi gamma di energia.</p>'
+	)
+
+	document.getElementById('meter').addEventListener('input', function() {
+		if (parseFloat(this.value)) {
+			let lambda = parseFloat(this.value);
+			let f = C / lambda;
+			console.log(f);
+			document.getElementById('hz').value = f;
+			let result = nullo;
+			if (f > 0 && f < 3000000000) {
+				result = radio;
+			}
+			else if (f >= 3000000000 && f < 300000000000) {
+				result = microonde;
+			}
+			else if (f >= 300000000000 && f < 400000000000000) {
+				result = infrarossi;
+			}
+			else if (f >= 400000000000000 && f < 750000000000000) {
+				result = visibile;
+			}
+			else if (f >= 750000000000000 && f < 30000000000000000) {
+				result = UV;
+			}
+			else if (f >= 30000000000000000 && f < 30000000000000000000) {
+				result = X;
+			}
+			else if (f >= 30000000000000000000) {
+				result = Gamma;
+			};
+			document.getElementById('summary').querySelector('h2').innerText = result.name;
+			document.getElementById('summary').querySelector('p').innerHTML = result.description;
+			document.getElementById('summary').style.display = 'block';
+		}
+		else if (this.value == '') {
+			document.getElementById('hz').value = '';
+		}
+		else if (this.value == '0') {
+			document.getElementById('hz').value = '0';
+		}
+	});
+
+
+	document.getElementById('hz').addEventListener('input', function() {
+		if (parseFloat(this.value)) {
+			let f = parseFloat(this.value);
+			let lambda = C / f;
+			console.log(lambda);
+			document.getElementById('meter').value = lambda;
+			let result = nullo;
+			if (f > 0 && f < 3000000000) {
+				result = radio;
+			}
+			else if (f >= 3000000000 && f < 300000000000) {
+				result = microonde;
+			}
+			else if (f >= 300000000000 && f < 400000000000000) {
+				result = infrarossi;
+			}
+			else if (f >= 400000000000000 && f < 750000000000000) {
+				result = visibile;
+			}
+			else if (f >= 750000000000000 && f < 30000000000000000) {
+				result = UV;
+			}
+			else if (f >= 30000000000000000 && f < 30000000000000000000) {
+				result = X;
+			}
+			else if (f >= 30000000000000000000) {
+				result = Gamma;
+			};
+			document.getElementById('summary').querySelector('h2').innerText = result.name;
+			document.getElementById('summary').querySelector('p').innerHTML = result.description;
+			document.getElementById('summary').style.display = 'block';
+		}
+		else if (this.value == '') {
+			document.getElementById('meter').value = '';
+		}
+		else if (this.value == '0') {
+			document.getElementById('meter').value = '0';
+			result = nullo;
+			document.getElementById('summary').querySelector('h2').innerText = result.name;
+			document.getElementById('summary').querySelector('p').innerHTML = result.description;
+			document.getElementById('summary').style.display = 'block';
+		}
+	});
+
+</script>
+
+</html>
