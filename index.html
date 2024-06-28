@@ -16,6 +16,7 @@
 			margin: 0;
 			justify-content: center;
 			display: flex;
+			vh:100%
 		}
 
 		grid {
@@ -58,30 +59,7 @@
 			font-size: 18px;
 		}
 	</style>
-</head>
-
-<body>
-	<div style="width: 100%;">
-		<div>
-			<header>
-				<h1>Lo Spettro Elettromagnetico</h1>
-			</header>
-			<grid id="inputs">
-				<p><label for="meter">&lambda;</label></p>
-				<p class="p-input"><input type="number" id="meter"></p>
-				<p>m</p>
-				<p><label for="hz">f</label></p>
-				<p class="p-input"><input type="number" id="hz"></p>
-				<p>Hz</p>
-			</grid>
-			<div id="summary">
-				<h2></h2>
-				<p></p>
-			</div>
-		</div>
-	</div>
-</body>
-<script>
+	<script>
 
 	let C = 299792458; // Speed of light.
 
@@ -220,5 +198,27 @@
 	});
 
 </script>
+</head>
 
+<body>
+	<div style="width: 100%;">
+		<div>
+			<header>
+				<h1>Lo Spettro Elettromagnetico</h1>
+			</header>
+			<grid id="inputs">
+				<p><label for="meter">&lambda;</label></p>
+				<p class="p-input"><input type="number" id="meter"></p>
+				<p>m</p>
+				<p><label for="hz">f</label></p>
+				<p class="p-input"><input type="number" id="hz"></p>
+				<p>Hz</p>
+			</grid>
+			<div id="summary">
+				<h2></h2>
+				<p></p>
+			</div>
+		</div>
+	</div>
+</body>
 </html>
